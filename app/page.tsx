@@ -1,3 +1,5 @@
+import { ContactForm } from "./ContactForm";
+
 const services = [
   { icon: "↯", title: "Blocked drains", price: "From $189", text: "Fast clearing for sinks, showers and sewer lines." },
   { icon: "◌", title: "Leaking taps", price: "From $145", text: "Repairs and replacements that stop the drip for good." },
@@ -114,13 +116,18 @@ export default function Home() {
       </section>
 
       <section className="contact-section" id="contact">
-        <div className="shell contact-grid">
-          <div><span className="kicker light">NEED A PLUMBER?</span><h2>Let’s get it sorted.</h2><p>Call now for fast help or email us to arrange a convenient time.</p></div>
-          <div className="contact-actions">
-            <a className="contact-phone" href="tel:+61291587742"><small>CALL TO BOOK</small><b>02 9158 7742</b><span>→</span></a>
-            <a href="mailto:bookings@hornsbystarplumbers.com.au">bookings@hornsbystarplumbers.com.au</a>
-            <p>Based in Hornsby NSW 2077<br/>Mon–Fri 7am–6pm · Emergency help 24/7</p>
+        <div className="shell contact-layout">
+          <div className="contact-details">
+            <span className="kicker light">NEED A PLUMBER?</span>
+            <h2>Let’s get it sorted.</h2>
+            <p>Need urgent help? Call now. For everything else, send an enquiry and we’ll get back to you during business hours.</p>
+            <div className="contact-actions">
+              <a className="contact-phone" href="tel:+61291587742"><small>CALL TO BOOK</small><b>02 9158 7742</b><span>→</span></a>
+              <a href="mailto:bookings@hornsbystarplumbers.com.au">bookings@hornsbystarplumbers.com.au</a>
+              <p>Based in Hornsby NSW 2077<br/>Mon–Fri 7am–6pm · Emergency help 24/7</p>
+            </div>
           </div>
+          <ContactForm />
         </div>
       </section>
 
