@@ -155,6 +155,16 @@ export default function Home() {
         </div>
       </footer>
 
+      <a
+        className="whatsapp-chat"
+        href="https://wa.me/61491570006?text=Hi%20Hornsby%20Star%20Plumbers%2C%20I%27d%20like%20help%20with%20a%20plumbing%20job."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open demo WhatsApp chat"
+      >
+        <span className="whatsapp-icon" aria-hidden="true">WA</span>
+        <span><b>WhatsApp us</b><small>Demo number</small></span>
+      </a>
       <a className="mobile-call" href="tel:+61291587742">Call now · 02 9158 7742</a>
     </main>
   );
