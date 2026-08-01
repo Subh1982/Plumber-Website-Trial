@@ -1,4 +1,5 @@
 import { ContactForm } from "./ContactForm";
+import { DiscountAccount } from "./DiscountAccount";
 
 const services = [
   { icon: "↯", title: "Blocked drains", price: "From $189", text: "Fast clearing for sinks, showers and sewer lines." },
@@ -36,6 +37,7 @@ export default function Home() {
           <a href="#services">Services</a>
           <a href="#pricing">Pricing</a>
           <a href="#reviews">Reviews</a>
+          <a href="#discount">5% discount</a>
           <a href="#contact">Contact</a>
         </nav>
         <a className="button button-small" href="tel:+61291587742">Book a plumber <span>→</span></a>
@@ -112,6 +114,20 @@ export default function Home() {
               <figure key={review.name}><div className="stars">★★★★★</div><blockquote>“{review.quote}”</blockquote><figcaption><span>{review.name.charAt(0)}</span><div><b>{review.name}</b><small>{review.suburb}</small></div></figcaption></figure>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="discount-section section" id="discount">
+        <div className="shell discount-layout">
+          <div className="discount-copy">
+            <span className="kicker light">STAR CUSTOMER ACCOUNT</span>
+            <div className="discount-number">5<sup>%</sup></div>
+            <h2>Join once.<br/><em>Save on every visit.</em></h2>
+            <p>Create a free customer account and receive 5% off eligible plumbing labour. Log in anytime to view your membership details.</p>
+            <ul><li>Free to join</li><li>Secure email and password login</li><li>Your enquiry messages stay separate</li></ul>
+            <small>Discount applies to eligible standard labour and cannot be combined with other offers. Parts and emergency call-out fees excluded.</small>
+          </div>
+          <DiscountAccount />
         </div>
       </section>
 
