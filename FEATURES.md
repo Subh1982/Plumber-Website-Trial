@@ -1,0 +1,123 @@
+# Hornsby Star Plumbers — Features
+
+This document summarises the key features currently implemented in the Hornsby Star Plumbers website.
+
+## Public website
+
+- Responsive, single-page website for desktop, tablet, and mobile devices.
+- Branded hero section with prominent telephone booking call-to-action.
+- Sticky mobile call button for fast access to the business phone number.
+- Smooth in-page navigation to services, pricing, reviews, discount membership, and contact sections.
+- Accessible headings, labels, navigation landmarks, links, and form status messages.
+- Reduced-motion support for visitors who prefer fewer interface animations.
+
+## Plumbing services and pricing
+
+- Service catalogue covering:
+  - Blocked drains
+  - Leaking taps
+  - Burst pipes
+  - Hot-water systems
+  - Toilets
+  - Gas fitting
+  - Installations
+  - Maintenance
+- Indicative starting prices for each service.
+- Clear pricing disclaimer covering GST, standard weekday work, parts, and after-hours call-outs.
+- Direct telephone booking link from every service card.
+
+## Business information and trust content
+
+- Hornsby and Upper North Shore service-area messaging.
+- Business hours and 24/7 emergency-help messaging.
+- Licensed, insured, upfront-pricing, and workmanship-guarantee trust indicators.
+- Three-step service promise covering arrival, pricing approval, and leaving the work area tidy.
+- Sample customer reviews and five-star presentation.
+- Telephone and email contact details.
+
+## Plumbing enquiry form
+
+- Customer enquiry form containing:
+  - Name
+  - Phone number
+  - Optional email address
+  - Suburb
+  - Required plumbing service
+  - Job description
+- Required-field and email-format validation.
+- Sending, success, and failure feedback without leaving the page.
+- Spam honeypot field.
+- Netlify Forms integration using a dedicated static form definition for Next.js compatibility.
+- Enquiries are stored in Netlify Forms and are not copied into Supabase.
+
+## Customer discount accounts
+
+- Free customer account registration for a 5% membership discount.
+- Registration fields for:
+  - Full name
+  - Phone number
+  - Preferred username
+  - Email address
+  - Password
+- Email and password authentication through Supabase Auth.
+- Email confirmation before account login.
+- Password validation requiring:
+  - At least eight characters
+  - One uppercase letter
+  - One number
+  - One special character
+- Username validation and case-insensitive username uniqueness.
+- Persistent authenticated sessions managed by Supabase.
+- Customer login and logout.
+- Private account view showing name, username, email, phone number, and discount percentage.
+- Permanent account deletion with an explicit confirmation prompt.
+- Automatic deletion of the related profile when the authentication account is deleted.
+
+## Supabase data model and security
+
+- `profiles` table containing:
+  - Supabase user ID
+  - Full name
+  - Phone number
+  - Username
+  - Fixed 5% discount value
+  - Creation timestamp
+- Automatic profile creation after a Supabase Auth user is registered.
+- Row Level Security enabled for the `profiles` table.
+- Customers can read only the profile attached to their authenticated user ID.
+- Passwords are handled and hashed by Supabase Auth and are never stored in the public profile table.
+- Account deletion is performed through a protected server endpoint.
+- Supabase's elevated server key is available only to server-side Netlify code.
+
+## WhatsApp contact demo
+
+- Floating WhatsApp-style contact button on desktop and mobile layouts.
+- Pre-filled plumbing enquiry message.
+- Uses an ACMA-reserved fictional Australian mobile number for demonstration.
+- Clearly labelled as a demo number.
+- The fictional number must be replaced with the business's registered WhatsApp number before real customer use.
+
+## Deployment and operations
+
+- Source code stored in GitHub.
+- Pull-request workflow for reviewing and merging changes into `main`.
+- Automatic Netlify deployment after changes are merged into `main`.
+- Next.js production build and TypeScript validation during deployment.
+- Netlify environment variables connect the deployed website to Supabase:
+  - `NEXT_PUBLIC_SUPABASE_URL`
+  - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+  - `SUPABASE_SERVICE_ROLE_KEY`
+- The Supabase service key is stored as a protected production secret.
+- Google Search Console ownership verification file is included in the public site.
+
+## Current boundaries
+
+The following are not currently implemented:
+
+- Online appointment scheduling
+- Online payments or invoicing
+- Automatic application of the 5% discount to a checkout or invoice
+- Staff administration dashboard for customer accounts
+- Customer profile editing
+- Password-reset interface within the website
+- Real WhatsApp messaging until the demo number is replaced
