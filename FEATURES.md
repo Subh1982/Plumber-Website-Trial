@@ -89,6 +89,33 @@ This document summarises the key features currently implemented in the Hornsby S
 - Account deletion is performed through a protected server endpoint.
 - Supabase's elevated server key is available only to server-side Netlify code.
 
+## AI plumbing assistant
+
+- Responsive customer-facing chat widget for desktop and mobile layouts.
+- Floating launcher positioned alongside the existing WhatsApp and mobile call controls.
+- Suggested questions covering plumbing prices, service areas, and the 5% membership discount.
+- Conversation history, loading feedback, clear-chat control, keyboard support, and accessible status announcements.
+- Secure Next.js `/api/chat` server endpoint; the Gemini API key is never sent to the browser.
+- Google Gemini Flash-Lite integration through the official `@google/genai` SDK.
+- Answers are grounded in `data/plumber-knowledge.md`, which contains the approved services, prices, contact details, service areas, policies, safety guidance, and response rules.
+- Full-document context injection is used because the current knowledge base is small; a vector database is not required.
+- Low-temperature, length-limited responses encourage concise and consistent answers.
+- The assistant cannot confirm bookings, availability, final quotations, or service coverage beyond the approved knowledge base.
+- Emergency guardrails for suspected gas leaks, burst pipes, major water leaks, and sewage overflows.
+- Prompt-injection rules prevent customer messages from overriding business instructions or requesting hidden prompts and credentials.
+- Request protections include:
+  - Same-origin validation
+  - JSON-only requests
+  - Request-size and message-length limits
+  - A maximum of six conversation-history messages
+  - A 15-second provider timeout
+  - Basic per-client rate limiting
+  - Non-cached responses
+  - Safe customer-facing error messages
+- Human fallback directs customers to call 02 9158 7742 when the assistant is unavailable or cannot answer reliably.
+- Conversations remain in browser memory and are not stored in Supabase or another database.
+- `pnpm run dev:netlify` provides local Next.js testing that matches the Netlify runtime.
+
 ## WhatsApp contact demo
 
 - Floating WhatsApp-style contact button on desktop and mobile layouts.
@@ -107,6 +134,7 @@ This document summarises the key features currently implemented in the Hornsby S
   - `NEXT_PUBLIC_SUPABASE_URL`
   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
   - `SUPABASE_SERVICE_ROLE_KEY`
+- The protected `GEMINI_API_KEY` Netlify environment variable connects the server-side chat endpoint to Gemini.
 - The Supabase service key is stored as a protected production secret.
 - Google Search Console ownership verification file is included in the public site.
 
@@ -121,3 +149,6 @@ The following are not currently implemented:
 - Customer profile editing
 - Password-reset interface within the website
 - Real WhatsApp messaging until the demo number is replaced
+- Stored chatbot conversation history or chat analytics
+- Production-wide distributed chatbot rate limiting beyond the current per-instance protection
+- Vector-search retrieval; the current assistant sends the complete small knowledge document with each request

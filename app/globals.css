@@ -165,6 +165,44 @@ footer { padding:40px 0 90px; background:#061f2b; color:#9fb0b8; }
 .whatsapp-chat b,.whatsapp-chat small { display:block; }
 .whatsapp-chat b { font-size:12px; }
 .whatsapp-chat small { margin-top:2px; color:#cdeadd; font-size:9px; }
+.sr-only { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+.ai-chat { position:fixed; z-index:30; right:24px; bottom:92px; }
+.ai-chat-toggle { display:flex; align-items:center; gap:11px; min-height:58px; padding:9px 16px 9px 9px; border:0; border-radius:999px; background:var(--navy); color:white; box-shadow:0 10px 28px rgba(0,0,0,.28); font:inherit; cursor:pointer; transition:.2s ease; }
+.ai-chat-toggle:hover { transform:translateY(-3px); background:var(--navy-2); }
+.ai-chat-toggle:focus-visible,.ai-chat-close:focus-visible,.ai-chat-form input:focus-visible,.ai-chat-form button:focus-visible,.ai-chat-suggestions button:focus-visible,.ai-chat-footer button:focus-visible { outline:3px solid var(--yellow); outline-offset:2px; }
+.ai-chat-toggle-icon { display:grid; place-items:center; width:40px; height:40px; border-radius:50%; background:var(--yellow); color:var(--navy); font-size:18px; }
+.ai-chat-toggle b,.ai-chat-toggle small { display:block; text-align:left; }
+.ai-chat-toggle b { font-size:12px; }
+.ai-chat-toggle small { margin-top:2px; color:#c7d5da; font-size:9px; }
+.ai-chat-panel { position:absolute; right:0; bottom:70px; display:flex; flex-direction:column; width:min(390px,calc(100vw - 30px)); height:min(590px,calc(100vh - 140px)); overflow:hidden; border:1px solid #cbd1cf; background:var(--paper); color:var(--navy); box-shadow:0 20px 55px rgba(0,0,0,.3); }
+.ai-chat-header { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; padding:18px 18px 16px; background:var(--navy); color:white; }
+.ai-chat-header>div { display:grid; grid-template-columns:10px 1fr; column-gap:9px; align-items:center; }
+.ai-chat-status { width:8px; height:8px; border-radius:50%; background:#52cf8c; box-shadow:0 0 0 3px rgba(82,207,140,.16); }
+.ai-chat-header strong { font-family:"DM Serif Display",Georgia,serif; font-size:18px; font-weight:400; }
+.ai-chat-header small { grid-column:2; margin-top:3px; color:#aebfc6; font-size:9px; }
+.ai-chat-close { width:32px; height:32px; border:1px solid rgba(255,255,255,.25); background:transparent; color:white; font-size:22px; line-height:1; cursor:pointer; }
+.ai-chat-messages { flex:1; min-height:0; overflow-y:auto; padding:18px; overscroll-behavior:contain; }
+.ai-message { display:flex; align-items:flex-start; gap:9px; margin-bottom:15px; }
+.ai-message>span { flex:0 0 auto; display:grid; place-items:center; min-width:30px; height:30px; padding:0 6px; border-radius:50%; background:var(--yellow); color:var(--navy); font-size:9px; font-weight:800; }
+.ai-message p { max-width:82%; margin:0; padding:10px 12px; background:white; border:1px solid var(--line); font-size:12px; line-height:1.55; white-space:pre-wrap; }
+.ai-message-user { flex-direction:row-reverse; }
+.ai-message-user>span { border-radius:4px; background:var(--navy); color:white; }
+.ai-message-user p { background:#f6eabf; border-color:#ead99b; }
+.ai-message-loading p { display:flex; align-items:center; gap:4px; min-height:38px; }
+.ai-message-loading i { width:6px; height:6px; border-radius:50%; background:#7b898e; animation:chat-pulse 1s infinite ease-in-out; }
+.ai-message-loading i:nth-child(2) { animation-delay:.15s; }
+.ai-message-loading i:nth-child(3) { animation-delay:.3s; }
+.ai-chat-suggestions { display:flex; flex-wrap:wrap; gap:7px; padding:0 18px 14px; }
+.ai-chat-suggestions button { padding:7px 9px; border:1px solid #c4cdcf; background:white; color:var(--navy); font:inherit; font-size:9px; cursor:pointer; }
+.ai-chat-suggestions button:hover { border-color:#a87500; background:#fff8e5; }
+.ai-chat-form { display:grid; grid-template-columns:1fr 48px; padding:13px 14px; border-top:1px solid var(--line); background:white; }
+.ai-chat-form input { min-width:0; height:46px; padding:0 13px; border:1px solid #c4cdcf; border-right:0; color:var(--navy); font:inherit; font-size:12px; outline:none; }
+.ai-chat-form button { border:0; background:var(--yellow); color:var(--navy); font-size:20px; font-weight:800; cursor:pointer; }
+.ai-chat-form button:disabled { cursor:not-allowed; opacity:.45; }
+.ai-chat-footer { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:0 14px 12px; background:white; color:#77868b; font-size:8px; }
+.ai-chat-footer button { padding:0; border:0; border-bottom:1px solid currentColor; background:transparent; color:#53666d; font:inherit; font-size:8px; cursor:pointer; }
+.ai-chat-footer button:disabled { cursor:not-allowed; opacity:.5; }
+@keyframes chat-pulse { 0%,80%,100% { opacity:.3; transform:translateY(0); } 40% { opacity:1; transform:translateY(-2px); } }
 .mobile-call { display:none; }
 @media (max-width:900px) {
   .nav nav { display:none; }
@@ -219,6 +257,11 @@ footer { padding:40px 0 90px; background:#061f2b; color:#9fb0b8; }
   .footer-grid { grid-template-columns:1fr; }
   .whatsapp-chat { right:14px; bottom:76px; padding:8px; }
   .whatsapp-chat>span:last-child { display:none; }
+  .ai-chat { right:14px; bottom:132px; }
+  .ai-chat-toggle { min-height:50px; padding:7px; }
+  .ai-chat-toggle>span:last-child { display:none; }
+  .ai-chat-toggle-icon { width:36px; height:36px; }
+  .ai-chat-panel { bottom:60px; height:min(560px,calc(100vh - 210px)); }
   .mobile-call { display:block; position:fixed; z-index:20; left:12px; right:12px; bottom:12px; padding:15px; background:var(--yellow); color:var(--navy); text-align:center; font-size:13px; font-weight:800; box-shadow:0 8px 24px rgba(0,0,0,.3); }
 }
-@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; animation:none !important; } }
