@@ -45,7 +45,10 @@ export function AIChat() {
     const history = messages
       .filter((item) => item.id !== welcomeMessage.id)
       .slice(-6)
-      .map(({ role, text: historyText }) => ({ role, text: historyText }));
+      .map(({ role, text: historyText }) => ({
+        role,
+        text: historyText.slice(0, role === "model" ? 2_000 : 1_000),
+      }));
 
     setMessages((current) => [
       ...current,
