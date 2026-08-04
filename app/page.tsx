@@ -1,5 +1,6 @@
 import { ContactForm } from "./ContactForm";
 import { DiscountAccount } from "./DiscountAccount";
+import { AIChat } from "./AIChat";
 
 const services = [
   { icon: "↯", title: "Blocked drains", price: "From $189", text: "Fast clearing for sinks, showers and sewer lines." },
@@ -165,6 +166,7 @@ export default function Home() {
         <span className="whatsapp-icon" aria-hidden="true">WA</span>
         <span><b>WhatsApp us</b><small>Demo number</small></span>
       </a>
+      <AIChat />
       <a className="mobile-call" href="tel:+61291587742">Call now · 02 9158 7742</a>
     </main>
   );
