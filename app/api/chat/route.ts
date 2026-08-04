@@ -234,7 +234,27 @@ function isMissingFileError(error: unknown) {
 
 function isSameOrigin(request: Request) {
   const origin = request.headers.get("origin");
-  return !origin || origin === new URL(request.url).origin;
+  if (!origin) return true;
+
+  let originHost: string;
+  try {
+    originHost = new URL(origin).host.toLowerCase();
+  } catch {
+    return false;
+  }
+
+  const forwardedHosts = request.headers
+    .get("x-forwarded-host")
+    ?.split(",")
+    .map((host) => host.trim().toLowerCase())
+    .filter(Boolean) ?? [];
+  const publicHosts = [
+    ...forwardedHosts,
+    request.headers.get("host")?.toLowerCase(),
+    new URL(request.url).host.toLowerCase(),
+  ].filter((host): host is string => Boolean(host));
+
+  return publicHosts.includes(originHost);
 }
 
 function clientAddress(request: Request) {
