@@ -5,7 +5,9 @@ import path from "node:path";
 export const runtime = "nodejs";
 
 const MODEL = "gemini-3.5-flash-lite";
-const MAX_MESSAGE_LENGTH = 1_000;
+const MAX_USER_MESSAGE_LENGTH = 1_000;
+const MAX_MODEL_HISTORY_LENGTH = 2_000;
+const MAX_HISTORY_TOTAL_LENGTH = 6_000;
 const MAX_HISTORY_MESSAGES = 6;
 const MAX_REQUEST_BYTES = 12_000;
 const REQUEST_TIMEOUT_MS = 15_000;
@@ -129,10 +131,10 @@ function parseChatRequest(
 
   const message = value.message.trim();
   if (!message) return { ok: false, error: "A message is required." };
-  if (message.length > MAX_MESSAGE_LENGTH) {
+  if (message.length > MAX_USER_MESSAGE_LENGTH) {
     return {
       ok: false,
-      error: `Messages must be ${MAX_MESSAGE_LENGTH.toLocaleString()} characters or fewer.`,
+      error: `Messages must be ${MAX_USER_MESSAGE_LENGTH.toLocaleString()} characters or fewer.`,
     };
   }
 
@@ -140,7 +142,7 @@ function parseChatRequest(
     return { ok: false, error: "Conversation history must be a list." };
   }
 
-  const history: ChatMessage[] = [];
+  const parsedHistory: ChatMessage[] = [];
   for (const item of (value.history ?? []).slice(-MAX_HISTORY_MESSAGES)) {
     if (
       !isRecord(item) ||
@@ -151,14 +153,34 @@ function parseChatRequest(
     }
 
     const text = item.text.trim();
-    if (!text || text.length > MAX_MESSAGE_LENGTH) {
+    if (!text) {
       return { ok: false, error: "Conversation history is invalid." };
     }
 
-    history.push({ role: item.role, text });
+    const maximumLength =
+      item.role === "user"
+        ? MAX_USER_MESSAGE_LENGTH
+        : MAX_MODEL_HISTORY_LENGTH;
+    parsedHistory.push({ role: item.role, text: text.slice(0, maximumLength) });
   }
 
+  const history = fitHistoryWithinLimit(parsedHistory);
   return { ok: true, message, history };
+}
+
+function fitHistoryWithinLimit(history: ChatMessage[]) {
+  const boundedHistory: ChatMessage[] = [];
+  let totalLength = 0;
+
+  for (let index = history.length - 1; index >= 0; index -= 1) {
+    const message = history[index];
+    if (totalLength + message.text.length > MAX_HISTORY_TOTAL_LENGTH) break;
+    boundedHistory.unshift(message);
+    totalLength += message.text.length;
+  }
+
+  while (boundedHistory[0]?.role === "model") boundedHistory.shift();
+  return boundedHistory;
 }
 
 function buildSystemInstruction(knowledge: string) {
