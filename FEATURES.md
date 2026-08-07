@@ -116,6 +116,22 @@ This document summarises the key features currently implemented in the Hornsby S
 - Conversations remain in browser memory and are not stored in Supabase or another database.
 - `pnpm run dev:netlify` provides local Next.js testing that matches the Netlify runtime.
 
+## AI photo assistant
+
+- Separate responsive Photo Assistant widget with its own floating launcher.
+- Customers can select up to three JPEG, PNG, or WebP plumbing photos and choose the closest problem category.
+- Browser-side resizing and JPEG compression keep the combined binary upload within Netlify's function payload allowance and remove most original image metadata.
+- Secure Next.js `/api/photo-assessment` endpoint; photos and the Gemini API key are never exposed to unrelated clients.
+- Google Gemini 3.6 Flash multimodal analysis through the official `@google/genai` SDK.
+- JSON Schema structured output restricts the model to approved assessment fields, categories, services, urgency values, confidence levels, and safety codes.
+- Server-side validation checks origin, request size, file count, processed file size, MIME type, actual file signature, problem category, model output, and business values.
+- Assessments are grounded in `data/plumber-knowledge.md` and cannot confirm a diagnosis, quotation, booking, availability, or property safety.
+- Fixed safety responses cover possible gas issues, water near electricity, major water leaks, and sewage hazards.
+- Results show visible observations, model confidence, suggested service, recommended timing, safety guidance, and questions a plumber may ask.
+- Photos are held only for the active request and are not written to Supabase, the repository, or another application database.
+- Five photo-assessment requests per client per minute, a 25-second Gemini timeout, non-cached responses, and safe human fallback messaging provide basic abuse and failure protection.
+- The current rate limiter is per server instance; a distributed production rate limiter is not yet implemented.
+
 ## WhatsApp contact demo
 
 - Floating WhatsApp-style contact button on desktop and mobile layouts.
@@ -134,7 +150,7 @@ This document summarises the key features currently implemented in the Hornsby S
   - `NEXT_PUBLIC_SUPABASE_URL`
   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
   - `SUPABASE_SERVICE_ROLE_KEY`
-- The protected `GEMINI_API_KEY` Netlify environment variable connects the server-side chat endpoint to Gemini.
+- The protected `GEMINI_API_KEY` Netlify environment variable connects the server-side chat and photo-assessment endpoints to Gemini.
 - The Supabase service key is stored as a protected production secret.
 - Google Search Console ownership verification file is included in the public site.
 
@@ -151,4 +167,6 @@ The following are not currently implemented:
 - Real WhatsApp messaging until the demo number is replaced
 - Stored chatbot conversation history or chat analytics
 - Production-wide distributed chatbot rate limiting beyond the current per-instance protection
+- Permanent photo storage or attachment of Photo Assistant images to enquiries
+- Production-wide distributed Photo Assistant rate limiting beyond the current per-instance protection
 - Vector-search retrieval; the current assistant sends the complete small knowledge document with each request

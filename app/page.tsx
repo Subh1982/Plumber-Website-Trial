@@ -1,6 +1,7 @@
 import { ContactForm } from "./ContactForm";
 import { DiscountAccount } from "./DiscountAccount";
 import { AIChat } from "./AIChat";
+import { PhotoAssistant } from "./PhotoAssistant";
 
 const services = [
   { icon: "↯", title: "Blocked drains", price: "From $189", text: "Fast clearing for sinks, showers and sewer lines." },
@@ -167,6 +168,7 @@ export default function Home() {
         <span><b>WhatsApp us</b><small>Demo number</small></span>
       </a>
       <AIChat />
+      <PhotoAssistant />
       <a className="mobile-call" href="tel:+61291587742">Call now · 02 9158 7742</a>
     </main>
   );
