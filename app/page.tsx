@@ -2,6 +2,7 @@ import { ContactForm } from "./ContactForm";
 import { DiscountAccount } from "./DiscountAccount";
 import { AIChat } from "./AIChat";
 import { PhotoAssistant } from "./PhotoAssistant";
+import { ExploreServicesLink } from "./ExploreServicesLink";
 
 const services = [
   { icon: "↯", title: "Blocked drains", price: "From $189", text: "Fast clearing for sinks, showers and sewer lines." },
@@ -53,7 +54,7 @@ export default function Home() {
             <p>Reliable plumbing for Hornsby homes and businesses—clear pricing, quality workmanship and friendly service, every time.</p>
             <div className="hero-actions">
               <a className="button" href="tel:+61492205682">Call 0492205682 <span>→</span></a>
-              <a className="text-link" href="#services">Explore our services ↓</a>
+              <ExploreServicesLink />
             </div>
             <div className="trust-row">
               <span><b>✓</b> Licensed &amp; insured</span>

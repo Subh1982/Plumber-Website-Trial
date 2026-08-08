@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@google/genai": "^2.15.0",
+    "@next/third-parties": "^16.3.0",
     "@supabase/supabase-js": "^2.111.0",
     "drizzle-orm": "0.45.2",
     "next": "16.2.6",
