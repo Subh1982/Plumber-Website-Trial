@@ -2,6 +2,13 @@
 
 This document summarises the key features currently implemented in the Hornsby Star Plumbers website.
 
+## Google Analytics 4
+
+- Optional GA4 integration configured through the `NEXT_PUBLIC_GA_MEASUREMENT_ID` environment variable.
+- Automatic `page_view` collection when the Google tag is enabled.
+- Custom `explore_services_click` event when a customer selects the hero's “Explore our services” link.
+- No Google Analytics script is loaded when the Measurement ID is not configured.
+
 ## Public website
 
 - Responsive, single-page website for desktop, tablet, and mobile devices.
