@@ -114,7 +114,7 @@ export function PhotoAssistant() {
       setError(
         requestError instanceof Error
           ? requestError.message
-          : "We couldn’t assess these photos. Please send an enquiry or call 02 9158 7742.",
+          : "We couldn’t assess these photos. Please send an enquiry or call 0492205682.",
       );
     } finally {
       setBusy(false);
@@ -277,7 +277,7 @@ export function PhotoAssistant() {
 
                 <div className="photo-result-actions">
                   <a href="#contact" onClick={() => setOpen(false)}>Send an enquiry</a>
-                  <a href="tel:+61291587742">Call 02 9158 7742</a>
+                  <a href="tel:+61492205682">Call 0492205682</a>
                 </div>
                 <button type="button" className="photo-assistant-reset" onClick={() => setAssessment(null)}>← Back to photos</button>
                 <p className="photo-result-disclaimer">AI-generated preliminary guidance only—not a diagnosis, quotation or safety confirmation.</p>

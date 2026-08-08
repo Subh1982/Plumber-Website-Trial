@@ -26,7 +26,7 @@ export default function Home() {
       <div className="topbar">
         <div className="shell topbar-inner">
           <span><b>24/7 emergency plumbing</b> · Hornsby &amp; surrounds</span>
-          <a href="tel:+61291587742">Call 02 9158 7742</a>
+          <a href="tel:+61492205682">Call 0492205682</a>
         </div>
       </div>
 
@@ -42,7 +42,7 @@ export default function Home() {
           <a href="#discount">5% discount</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a className="button button-small" href="tel:+61291587742">Book a plumber <span>→</span></a>
+        <a className="button button-small" href="tel:+61492205682">Book a plumber <span>→</span></a>
       </header>
 
       <section className="hero" id="top">
@@ -52,7 +52,7 @@ export default function Home() {
             <h1>Plumbing problems?<br/><em>Consider them solved.</em></h1>
             <p>Reliable plumbing for Hornsby homes and businesses—clear pricing, quality workmanship and friendly service, every time.</p>
             <div className="hero-actions">
-              <a className="button" href="tel:+61291587742">Call 02 9158 7742 <span>→</span></a>
+              <a className="button" href="tel:+61492205682">Call 0492205682 <span>→</span></a>
               <a className="text-link" href="#services">Explore our services ↓</a>
             </div>
             <div className="trust-row">
@@ -86,7 +86,7 @@ export default function Home() {
               <article className="service-card" key={service.title}>
                 <div className="service-top"><span className="service-icon">{service.icon}</span><span className="price">{service.price}</span></div>
                 <h3>{service.title}</h3><p>{service.text}</p>
-                <a href="tel:+61291587742" aria-label={`Book ${service.title}`}>Book this service <span>→</span></a>
+                <a href="tel:+61492205682" aria-label={`Book ${service.title}`}>Book this service <span>→</span></a>
               </article>
             ))}
           </div>
@@ -140,7 +140,7 @@ export default function Home() {
             <h2>Let’s get it sorted.</h2>
             <p>Need urgent help? Call now. For everything else, send an enquiry and we’ll get back to you during business hours.</p>
             <div className="contact-actions">
-              <a className="contact-phone" href="tel:+61291587742"><small>CALL TO BOOK</small><b>02 9158 7742</b><span>→</span></a>
+              <a className="contact-phone" href="tel:+61492205682"><small>CALL TO BOOK</small><b>0492205682</b><span>→</span></a>
               <a href="mailto:bookings@hornsbystarplumbers.com.au">bookings@hornsbystarplumbers.com.au</a>
               <p>Based in Hornsby NSW 2077<br/>Mon–Fri 7am–6pm · Emergency help 24/7</p>
             </div>
@@ -159,7 +159,7 @@ export default function Home() {
 
       <a
         className="whatsapp-chat"
-        href="https://wa.me/61491570006?text=Hi%20Hornsby%20Star%20Plumbers%2C%20I%27d%20like%20help%20with%20a%20plumbing%20job."
+        href="https://wa.me/61492205682?text=Hi%20Hornsby%20Star%20Plumbers%2C%20I%27d%20like%20help%20with%20a%20plumbing%20job."
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Open demo WhatsApp chat"
@@ -169,7 +169,7 @@ export default function Home() {
       </a>
       <AIChat />
       <PhotoAssistant />
-      <a className="mobile-call" href="tel:+61291587742">Call now · 02 9158 7742</a>
+      <a className="mobile-call" href="tel:+61492205682">Call now · 0492205682</a>
     </main>
   );
 }
