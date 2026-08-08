@@ -156,7 +156,7 @@ export async function POST(request: Request) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return jsonError(
-      "Photo assessment is temporarily unavailable. Please call 02 9158 7742.",
+      "Photo assessment is temporarily unavailable. Please call 0492205682.",
       503,
     );
   }
@@ -210,7 +210,7 @@ export async function POST(request: Request) {
     const message = error instanceof Error ? error.message : "Unknown photo provider error";
     console.error("Photo assessment failed:", message);
     return jsonError(
-      "We couldn’t assess these photos. Please send an enquiry or call 02 9158 7742.",
+      "We couldn’t assess these photos. Please send an enquiry or call 0492205682.",
       502,
     );
   } finally {

@@ -71,7 +71,7 @@ export async function POST(request: Request) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return jsonError(
-      "Chat is temporarily unavailable. Please call 02 9158 7742.",
+      "Chat is temporarily unavailable. Please call 0492205682.",
       503,
     );
   }
@@ -112,7 +112,7 @@ export async function POST(request: Request) {
     console.error("Chat request failed:", message);
 
     return jsonError(
-      "Chat is temporarily unavailable. Please call 02 9158 7742.",
+      "Chat is temporarily unavailable. Please call 0492205682.",
       502,
     );
   } finally {
@@ -198,7 +198,7 @@ service coverage outside the listed area, or final quotations. Follow every
 emergency and safety rule in the knowledge base.
 
 If the answer is not in the knowledge base, say that you do not have confirmed
-information and direct the customer to call 02 9158 7742 or use the enquiry
+information and direct the customer to call 0492205682 or use the enquiry
 form. Do not request passwords, payment details, authentication codes, or other
 sensitive information.
 

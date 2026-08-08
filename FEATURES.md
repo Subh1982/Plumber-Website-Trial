@@ -112,7 +112,7 @@ This document summarises the key features currently implemented in the Hornsby S
   - Basic per-client rate limiting
   - Non-cached responses
   - Safe customer-facing error messages
-- Human fallback directs customers to call 02 9158 7742 when the assistant is unavailable or cannot answer reliably.
+- Human fallback directs customers to call 0492205682 when the assistant is unavailable or cannot answer reliably.
 - Conversations remain in browser memory and are not stored in Supabase or another database.
 - `pnpm run dev:netlify` provides local Next.js testing that matches the Netlify runtime.
 

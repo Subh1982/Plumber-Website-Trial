@@ -69,7 +69,7 @@ export function AIChat() {
           ? result.answer
           : isRecord(result) && typeof result.error === "string"
             ? result.error
-            : "Chat is temporarily unavailable. Please call 02 9158 7742.";
+            : "Chat is temporarily unavailable. Please call 0492205682.";
 
       setMessages((current) => [
         ...current,
@@ -81,7 +81,7 @@ export function AIChat() {
         {
           id: nextId.current++,
           role: "model",
-          text: "Chat is temporarily unavailable. Please call 02 9158 7742.",
+          text: "Chat is temporarily unavailable. Please call 0492205682.",
         },
       ]);
     } finally {

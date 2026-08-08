@@ -98,7 +98,7 @@ export function ContactForm() {
 
       <div className="form-status" aria-live="polite">
         {status === "sent" && <p className="form-success"><b>Thanks—your enquiry is on its way.</b><br />We’ll be in touch during business hours.</p>}
-        {status === "error" && <p className="form-error"><b>We couldn’t send that just now.</b><br />Please call <a href="tel:+61291587742">02 9158 7742</a>.</p>}
+        {status === "error" && <p className="form-error"><b>We couldn’t send that just now.</b><br />Please call <a href="tel:+61492205682">0492205682</a>.</p>}
       </div>
     </form>
   );
