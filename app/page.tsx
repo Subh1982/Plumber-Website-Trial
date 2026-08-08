@@ -3,6 +3,7 @@ import { DiscountAccount } from "./DiscountAccount";
 import { AIChat } from "./AIChat";
 import { PhotoAssistant } from "./PhotoAssistant";
 import { ExploreServicesLink } from "./ExploreServicesLink";
+import { TrackedCallLink } from "./TrackedCallLink";
 
 const services = [
   { icon: "↯", title: "Blocked drains", price: "From $189", text: "Fast clearing for sinks, showers and sewer lines." },
@@ -27,7 +28,7 @@ export default function Home() {
       <div className="topbar">
         <div className="shell topbar-inner">
           <span><b>24/7 emergency plumbing</b> · Hornsby &amp; surrounds</span>
-          <a href="tel:+61492205682">Call 0492205682</a>
+          <TrackedCallLink location="top_bar">Call 0492205682</TrackedCallLink>
         </div>
       </div>
 
@@ -53,7 +54,7 @@ export default function Home() {
             <h1>Plumbing problems?<br/><em>Consider them solved.</em></h1>
             <p>Reliable plumbing for Hornsby homes and businesses—clear pricing, quality workmanship and friendly service, every time.</p>
             <div className="hero-actions">
-              <a className="button" href="tel:+61492205682">Call 0492205682 <span>→</span></a>
+              <TrackedCallLink className="button" location="hero">Call 0492205682 <span>→</span></TrackedCallLink>
               <ExploreServicesLink />
             </div>
             <div className="trust-row">

@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { TrackedCallLink } from "./TrackedCallLink";
 
 type SelectedPhoto = {
   file: File;
@@ -277,7 +278,7 @@ export function PhotoAssistant() {
 
                 <div className="photo-result-actions">
                   <a href="#contact" onClick={() => setOpen(false)}>Send an enquiry</a>
-                  <a href="tel:+61492205682">Call 0492205682</a>
+                  <TrackedCallLink location="photo_assistant">Call 0492205682</TrackedCallLink>
                 </div>
                 <button type="button" className="photo-assistant-reset" onClick={() => setAssessment(null)}>← Back to photos</button>
                 <p className="photo-result-disclaimer">AI-generated preliminary guidance only—not a diagnosis, quotation or safety confirmation.</p>

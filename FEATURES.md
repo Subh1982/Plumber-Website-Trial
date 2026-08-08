@@ -7,6 +7,7 @@ This document summarises the key features currently implemented in the Hornsby S
 - Optional GA4 integration configured through the `NEXT_PUBLIC_GA_MEASUREMENT_ID` environment variable.
 - Automatic `page_view` collection when the Google tag is enabled.
 - Custom `explore_services_click` event when a customer selects the hero's “Explore our services” link.
+- Custom `call_click` event for the “Call 0492205682” links, including their top-bar, hero, or Photo Assistant location.
 - No Google Analytics script is loaded when the Measurement ID is not configured.
 
 ## Public website
